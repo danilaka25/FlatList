@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   StyleSheet,
   FlatList,
@@ -6,7 +7,6 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Button,
   Image,
 } from 'react-native';
 
@@ -59,12 +59,35 @@ const DATA = [
     ac: '8.5',
     lastChech: '3',
   },
+  {
+    id: 7,
+    title: 'Neha Stacey, Male, 12/09/1988 (144)',
+    doctor: 'Dr. Vincent Vega',
+    bip: '140/90',
+    ac: '7.5',
+    lastChech: '2',
+  },
+  {
+    id: 8,
+    title: 'Romany Clay, Female, 03/03/1980 (37)',
+    doctor: 'Dr. Yazmin Higgins',
+    bip: '210/100',
+    ac: '8.5',
+    lastChech: '8',
+  },
+  {
+    id: 9,
+    title: 'Romany Clay, Male, 12/09/1981 (44)',
+    doctor: 'Dr. Vincent Vega',
+    bip: '210/100',
+    ac: '8.5',
+    lastChech: '3',
+  },
 ];
 
-export default class TestList extends React.Component {
+export default class PacientList extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       patientList: DATA,
     };
@@ -124,14 +147,13 @@ export default class TestList extends React.Component {
           <View style={styles.flatListContainer}>
             <FlatList
               style={styles.flatList}
-              ref="flatList"
               data={this.state.patientList}
               keyExtractor={item => item.id.toString()}
               renderItem={({item}) => (
                 <View style={styles.flatListItem}>
                   <View style={styles.flatListItemMain}>
                     <Text style={styles.flatListItemTitle}>{item.title}</Text>
-                    <Text>{item.doctor}</Text>
+                    <Text style={styles.flatListItemDoctor}>{item.doctor}</Text>
                   </View>
 
                   <View style={styles.flatListItemAdditional}>
@@ -196,7 +218,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5A009D',
     flexDirection: 'row',
     alignSelf: 'stretch',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'flex-end',
     paddingBottom: 15,
     flex: 1,
@@ -204,6 +226,7 @@ const styles = StyleSheet.create({
 
   headerText: {
     color: '#ffffff',
+    fontSize: 21,
   },
 
   mainContainer: {
@@ -214,9 +237,10 @@ const styles = StyleSheet.create({
   },
 
   filterContainer: {
-    height: 60,
+    height: 80,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   searchInputWrap: {
@@ -230,7 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     borderColor: '#E2B8EC',
-    height: 40,
+    height: 50,
     paddingLeft: 40,
     backgroundColor: '#E2B8EC',
   },
@@ -244,32 +268,29 @@ const styles = StyleSheet.create({
   },
 
   searchIconWrapper: {
-    padding: 15,
+    height: 50,
+    width: 50,
     backgroundColor: '#ffffff',
     borderRadius: 25,
     marginLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#999999',
+    shadowRadius: 5,
+    shadowOpacity: 0.5,
   },
 
   settingsIcon: {
-    height: 15,
-    width: 15,
-  },
-
-  searchButton: {
-    // flex: 1
-  },
-
-  flatListContainer: {
-    //  flex: 1
+    height: 20,
+    width: 20,
   },
 
   flatList: {
-    //backgroundColor: '#cccccc',
-    //  flex: 1
+    marginBottom: 80,
   },
 
   flatListItem: {
-    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#ffffff',
     borderRadius: 17,
     height: 125,
@@ -277,12 +298,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 15,
     paddingRight: 15,
-    //shadowColor: '#30C1DD',
     justifyContent: 'space-between',
   },
 
   flatListItemMain: {
-    borderBottomColor: '#999999',
+    borderBottomColor: '#cccccc',
     borderBottomWidth: 1,
     height: 72,
     justifyContent: 'center',
@@ -298,6 +318,7 @@ const styles = StyleSheet.create({
   desc: {
     color: '#cccccc',
     fontSize: 11,
+    marginBottom: 3,
   },
 
   textColorRed: {
@@ -323,6 +344,7 @@ const styles = StyleSheet.create({
 
   footer: {
     flex: 1,
+    height: 60,
     backgroundColor: '#ffffff',
     justifyContent: 'flex-start',
     paddingTop: 10,
