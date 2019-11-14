@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  TouchableHighlight,
+  Platform,
 } from 'react-native';
 
 const DATA = [
@@ -108,6 +110,14 @@ export default class PacientList extends React.Component {
     return (
       <View style={styles.Main}>
         <View style={styles.header}>
+          <TouchableHighlight
+            onPress={() => this.props.navigation.openDrawer()}>
+            <Image
+              source={require('../assets/icons/menu.png')}
+              style={styles.menuIcon}
+            />
+          </TouchableHighlight>
+
           <Text style={styles.headerText}>Patient Care Opportunities</Text>
         </View>
 
@@ -115,13 +125,9 @@ export default class PacientList extends React.Component {
           <View style={styles.filterContainer}>
             <View style={styles.searchInputWrap}>
               <Image
-                source={{
-                  uri:
-                    'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png',
-                }}
+                source={require('../assets/icons/search.png')}
                 style={styles.searchIcon}
               />
-
               <TextInput
                 placeholder="Search"
                 style={styles.searchInput}
@@ -133,10 +139,7 @@ export default class PacientList extends React.Component {
               <TouchableOpacity>
                 <View style={styles.searchIconWrapper}>
                   <Image
-                    source={{
-                      uri:
-                        'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2014/png/iconmonstr-control-panel-9.png&r=90&g=0&b=157',
-                    }}
+                    source={require('../assets/icons/settings.png')}
                     style={styles.settingsIcon}
                   />
                 </View>
@@ -195,10 +198,7 @@ export default class PacientList extends React.Component {
 
         <View style={styles.footer}>
           <Image
-            source={{
-              uri:
-                'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2017/png/iconmonstr-building-6.png&r=90&g=0&b=157',
-            }}
+            source={require('../assets/icons/home.png')}
             style={styles.footerIcon}
           />
 
@@ -217,16 +217,26 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#5A009D',
     flexDirection: 'row',
-    alignSelf: 'stretch',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
     paddingBottom: 15,
-    flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10,
+    alignContent: 'stretch',
+    height: Platform.OS === 'ios' ? 0 : 55,
+    flex: Platform.OS === 'ios' ? 1 : 0,
+  },
+
+  menuIcon: {
+    width: 25,
+    height: 25,
   },
 
   headerText: {
     color: '#ffffff',
     fontSize: 21,
+    alignItems: 'center',
+    marginLeft: 15,
   },
 
   mainContainer: {
@@ -255,15 +265,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E2B8EC',
     height: 50,
-    paddingLeft: 40,
+    paddingLeft: 50,
     backgroundColor: '#E2B8EC',
   },
 
   searchIcon: {
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 20,
     position: 'absolute',
-    left: 10,
+    left: 20,
     zIndex: 999,
   },
 
@@ -324,13 +334,13 @@ const styles = StyleSheet.create({
   textColorRed: {
     color: 'red',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 
   textColorPurple: {
     color: '#5A009D',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 
   flatListItemTitle: {
