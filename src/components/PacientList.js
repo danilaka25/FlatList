@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     alignContent: 'stretch',
-    height: Platform.OS === 'ios' ? 0 : 55,
+    paddingTop: Platform.OS === 'ios' ? 0 : 10,
     flex: Platform.OS === 'ios' ? 1 : 0,
   },
 
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: '#f4e9f7',
-    flex: 9,
+    flex: 10,
   },
 
   filterContainer: {
