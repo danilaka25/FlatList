@@ -1,24 +1,8 @@
 import React from 'react';
 import PacientList from './PacientList';
-import SideMenu from './SideMenu';
-
-import {
-  StyleSheet,
-  FlatList,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Image,
-  Dimensions,
-  ScrollView,
-} from 'react-native';
-
+import {Text, View, Dimensions, ScrollView} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import {DrawerItems} from 'react-navigation-drawer';
-
 import {createAppContainer} from 'react-navigation';
-
 import {createDrawerNavigator} from 'react-navigation-drawer';
 
 const {width} = Dimensions.get('window');
@@ -46,9 +30,6 @@ const Drawer = createDrawerNavigator(
   {
     Home: {
       screen: PacientList,
-      navigationOptions: {
-        title: 'Homepage',
-      },
     },
   },
   {
